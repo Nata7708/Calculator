@@ -27,8 +27,8 @@ public class Window extends JFrame implements WindowListener, ActionListener {  
     private JButton umn = new JButton("*");
     private JButton point = new JButton(".");
     private JButton revers = new JButton("+-");
-    private int a = 0;
-    private int b = 0;
+    private double a = 0;
+    private double b = 0;
     private char z;
 
 
@@ -190,7 +190,7 @@ public class Window extends JFrame implements WindowListener, ActionListener {  
     @Override
     public void actionPerformed(ActionEvent e) { //работа кнопок , обработчик событий
         if (e.getSource()==b9){ // если нажата клавиша такая-то
-            text = text + b9.getText(); // делаем текст счетчиком, чтобы добавлялись одиниковые цифры
+            text = text + b9.getText(); // делаем текст счетчиком, чтобы добавлялись одинaковые цифры
             f.setText(text);
         }
         if (e.getSource()==b8){
@@ -229,26 +229,31 @@ public class Window extends JFrame implements WindowListener, ActionListener {  
             text = text + b0.getText();
             f.setText(text);
         }
+        if (e.getSource()==point) {
+            text = text + point.getText();
+            f.setText(text);
+        }
+
         if (e.getSource()==plus){
-            a = Integer.parseInt(text); // запоминаем введенное число
+            a = Double.parseDouble(text); // запоминаем введенное число
             f.setText(text+plus.getText());
             text = "";
             z = '+';
         }
         if (e.getSource()==minus){
-            a = Integer.parseInt(text); // запоминаем введенное число
+            a = Double.parseDouble(text); // запоминаем введенное число
             f.setText(text+minus.getText());
             text = "";
             z = '-';
         }
         if (e.getSource()==umn){
-            a = Integer.parseInt(text); // запоминаем введенное число
+            a = Double.parseDouble(text); // запоминаем введенное число
             f.setText(text+umn.getText());
             text = "";
             z = '*';
         }
         if (e.getSource()==delenie){
-            a = Integer.parseInt(text); // запоминаем введенное число
+            a = Double.parseDouble(text); // запоминаем введенное число
             f.setText(text+delenie.getText());
             text = "";
             z = '/';
@@ -257,39 +262,39 @@ public class Window extends JFrame implements WindowListener, ActionListener {  
             text = ""; // работа кнопки Удалить
             f.setText(text);
         }
-        if(e.getSource()==back){ // кнопка Удалить последнюю цифру
-            int c = Integer.parseInt(f.getText());
+        if(e.getSource()==back){                     // кнопка Удалить последнюю цифру доделать!!
+            double c = Double.parseDouble(f.getText());
             c = c/10;
             f.setText(String.valueOf(c));
             text = String.valueOf(c);
         }
         if (e.getSource()==revers){ // работа кнопки Смена знака
-            int c = Integer.parseInt(f.getText());
+            double c = Double.parseDouble(f.getText());
             c = c*-1;
             f.setText(String.valueOf(c));
             text = String.valueOf(c);
         }
         if (e.getSource()==res){
            if (z == '+'){
-               b = Integer.parseInt(text); //переводим число в текст
+               b = Double.parseDouble(text); //переводим число в текст
                f.setText(String.valueOf(a+b)); // переводим обратно в число
            }
         }
         if (e.getSource()==res){
             if (z == '-'){
-                b = Integer.parseInt(text); //переводим число в текст
+                b = Double.parseDouble(text); //переводим число в текст
                 f.setText(String.valueOf(a-b)); // переводим обратно в число
             }
         }
         if (e.getSource()==res) {
             if (z == '*') {
-                b = Integer.parseInt(text); //переводим число в текст
+                b = Double.parseDouble(text); //переводим число в текст
                 f.setText(String.valueOf(a * b)); // переводим обратно в число
             }
         }
         if (e.getSource()==res) {
             if (z == '/') {
-                b = Integer.parseInt(text); //переводим число в текст
+                b = Double.parseDouble(text); //переводим число в текст
                 f.setText(String.valueOf(a / b)); // переводим обратно в число
             }
         }
